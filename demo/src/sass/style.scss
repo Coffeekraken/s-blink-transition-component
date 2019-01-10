@@ -1,0 +1,15 @@
+@import 'node_modules/coffeekraken-sugar/index';
+
+@include s-setup(());
+@include s-init();
+@include s-classes();
+
+body {
+  padding: s-space(bigger);
+  background-color: s-color(primary);
+}
+
+s-turbulence-transition {
+  @include s-fit(absolute);
+  color: black;
+}
