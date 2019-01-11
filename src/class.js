@@ -1,2 +1,2 @@
-import STurbulenceTransitionComponent from "./js/STurbulenceTransitionComponent"
-export default STurbulenceTransitionComponent
+import SBlinkTransitionComponent from "./js/SBlinkTransitionComponent"
+export default SBlinkTransitionComponent
