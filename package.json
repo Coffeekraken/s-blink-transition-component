@@ -1,12 +1,12 @@
 {
-  "name": "coffeekraken-s-component-name-component",
+  "name": "coffeekraken-s-blink-transition-component",
   "version": "1.0.0",
-  "description": "component-description",
+  "description": "Create a nice blink style transition effect fully customizable",
   "main": "dist/index.js",
   "homepage": "http://coffeekraken.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coffeekraken/s-{component-name}-component"
+    "url": "https://github.com/coffeekraken/s-blink-transition-component"
   },
   "watch": {
     "doc:js": {

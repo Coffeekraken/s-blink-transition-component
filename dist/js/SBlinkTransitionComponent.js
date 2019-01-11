@@ -125,22 +125,30 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p)
 }
 
-var Component =
+/**
+ * Create a nice blink style transition effect fully customizable
+ *
+ * @example    html
+ * <s-blink-transition></s-blink-transition>
+ *
+ * @author    Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
+ */
+var SBlinkTransitionComponent =
   /*#__PURE__*/
   (function(_SWebComponent) {
-    _inherits(Component, _SWebComponent)
+    _inherits(SBlinkTransitionComponent, _SWebComponent)
 
-    function Component() {
-      _classCallCheck(this, Component)
+    function SBlinkTransitionComponent() {
+      _classCallCheck(this, SBlinkTransitionComponent)
 
       return _possibleConstructorReturn(
         this,
-        _getPrototypeOf(Component).apply(this, arguments)
+        _getPrototypeOf(SBlinkTransitionComponent).apply(this, arguments)
       )
     }
 
     _createClass(
-      Component,
+      SBlinkTransitionComponent,
       [
         {
           key: "componentWillMount",
@@ -152,23 +160,18 @@ var Component =
            */
           value: function componentWillMount() {
             _get(
-              _getPrototypeOf(Component.prototype),
+              _getPrototypeOf(SBlinkTransitionComponent.prototype),
               "componentWillMount",
               this
-            ).call(this) // append the base polygon
+            ).call(this)
+
+            this._isAnimateIn = false
+            this._isAnimateOut = false // append the base polygon
 
             this.innerHTML =
-              '\n      <svg width="1920" height="1080" viewBox="0 0 1920 1080" preserveAspectRatio="none">\n        <!--<filter id="displacementFilter">\n          <feTurbulence type="turbulence" baseFrequency=".01" numOctaves="2" result="turbulence"/>\n          <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="70" xChannelSelector="R" yChannelSelector="G"/>\n        </filter>-->\n        <polygon id="shapeTop" points="1920 540 970 540 960 540 950 540 0 540 0 0 1920 0 1920 540" fill="currentColor" />\n        <polygon id="shapeBottom" points="0 540 950 540 960 540 970 540 1920 540 1920 1080 0 1080 0 540" fill="currentColor" />\n      </svg>\n    '
+              '\n      <svg width="1920" height="1080" viewBox="0 0 1920 1080" preserveAspectRatio="none">\n        <polygon id="shapeTop" points="1920 541 970 541 960 541 950 541 0 541 0 0 1920 0 1920 541" fill="currentColor" />\n        <polygon id="shapeBottom" points="0 540 950 540 960 540 970 540 1920 540 1920 1080 0 1080 0 540" fill="currentColor" />\n      </svg>\n    '
             this._$shapeTop = this.querySelector("#shapeTop")
-            this._$shapeBottom = this.querySelector("#shapeBottom") // this._$feTurbulence = this.querySelector('feTurbulence')
-            // this._$feDisplacementMap = this.querySelector('feDisplacementMap')
-            // const animTurbulence = {
-            //   targets: [this._$feTurbulence, this._$feDisplacementMap],
-            //   baseFrequency: 0,
-            //   duration: 1500,
-            //   easing: 'easeInOutQuad'
-            // }
-
+            this._$shapeBottom = this.querySelector("#shapeBottom")
             var animOpenTop = {
               targets: [this._$shapeTop],
               points: [
@@ -177,8 +180,8 @@ var Component =
                     "1920 540 970 538 960 538 950 538 0 540 0 0 1920 0 1920 540"
                 }
               ],
-              duration: 700,
-              easing: "easeInOutExpo"
+              duration: this.props.phaseOneDuration,
+              easing: this.props.phaseOneEasing
             }
             var animFullOpenTop = {
               targets: [this._$shapeTop],
@@ -187,8 +190,8 @@ var Component =
                   value: "1920 0 970 0 960 0 950 0 0 0 0 0 1920 0 1920 0"
                 }
               ],
-              duration: 500,
-              easing: "easeInOutExpo"
+              duration: this.props.phaseTwoDuration,
+              easing: this.props.phaseTwoEasing
             }
             var animOpenBottom = {
               targets: [this._$shapeBottom],
@@ -198,10 +201,8 @@ var Component =
                     "0 540 950 540 960 540 970 540 1920 540 1920 1080 0 1080 0 540"
                 }
               ],
-              loop: true,
-              duration: 700,
-              direction: "alternate",
-              easing: "easeInOutExpo"
+              duration: this.props.phaseOneDuration,
+              easing: this.props.phaseOneEasing
             }
             var animFullopenBottom = {
               targets: [this._$shapeBottom],
@@ -211,10 +212,8 @@ var Component =
                     "0 1080 950 1080 960 1080 970 1080 1920 1080 1920 1080 0 1080 0 1080"
                 }
               ],
-              duration: 500,
-              easing: "easeInOutExpo" // this._tlTurbulence = anime.timeline({
-              // });
-              // this._tlTurbulence.pause()
+              duration: this.props.phaseTwoDuration,
+              easing: this.props.phaseTwoEasing
             }
             this._tlTop = _animejs.default.timeline({})
 
@@ -222,8 +221,7 @@ var Component =
 
             this._tlBottom = _animejs.default.timeline({})
 
-            this._tlBottom.pause() // this._tlTurbulence.add(animTurbulence)
-            // this._tlTurbulence.seek(this._tlTurbulence.duration)
+            this._tlBottom.pause()
 
             this._tlTop.add(animOpenTop)
 
@@ -247,7 +245,7 @@ var Component =
           key: "componentMount",
           value: function componentMount() {
             _get(
-              _getPrototypeOf(Component.prototype),
+              _getPrototypeOf(SBlinkTransitionComponent.prototype),
               "componentMount",
               this
             ).call(this)
@@ -262,7 +260,7 @@ var Component =
           key: "componentUnmount",
           value: function componentUnmount() {
             _get(
-              _getPrototypeOf(Component.prototype),
+              _getPrototypeOf(SBlinkTransitionComponent.prototype),
               "componentUnmount",
               this
             ).call(this)
@@ -277,7 +275,7 @@ var Component =
           key: "componentWillReceiveProp",
           value: function componentWillReceiveProp(name, newVal, oldVal) {
             _get(
-              _getPrototypeOf(Component.prototype),
+              _getPrototypeOf(SBlinkTransitionComponent.prototype),
               "componentWillReceiveProp",
               this
             ).call(this, name, newVal, oldVal)
@@ -292,9 +290,11 @@ var Component =
         {
           key: "render",
           value: function render() {
-            _get(_getPrototypeOf(Component.prototype), "render", this).call(
+            _get(
+              _getPrototypeOf(SBlinkTransitionComponent.prototype),
+              "render",
               this
-            )
+            ).call(this)
           }
           /**
            * Anim in
@@ -306,6 +306,9 @@ var Component =
           value: function animateIn() {
             var _this = this
 
+            if (this._isAnimateIn) return
+            this._isAnimateIn = true
+            this.classList.add("active")
             return new Promise(function(resolve) {
               _this._tlTop.reverse()
 
@@ -316,14 +319,12 @@ var Component =
               _this._tlBottom.play()
 
               setTimeout(function() {
+                _this._isAnimateIn = false
+
+                _this.classList.remove("active")
+
                 resolve(_this)
-              }, _this._tlBottom.duration) // setTimeout(() => {
-              //   this._tlTurbulence.reverse()
-              //   this._tlTurbulence.play()
-              //   setTimeout(() => {
-              //     resolve(this)
-              //   }, 1500)
-              // }, 1000)
+              }, _this._tlBottom.duration)
             })
           }
           /**
@@ -336,6 +337,9 @@ var Component =
           value: function animateOut() {
             var _this2 = this
 
+            if (this._isAnimateOut) return
+            this._isAnimateOut = true
+            this.classList.add("active")
             return new Promise(function(resolve) {
               _this2._tlTop.reverse()
 
@@ -343,10 +347,13 @@ var Component =
 
               _this2._tlBottom.reverse()
 
-              _this2._tlBottom.play() // this._tlTurbulence.reverse()
-              // this._tlTurbulence.play()
+              _this2._tlBottom.play()
 
               setTimeout(function() {
+                _this2._isAnimateOut = false
+
+                _this2.classList.remove("active")
+
                 resolve(_this2)
               }, _this2._tlTop.duration)
             })
@@ -365,11 +372,15 @@ var Component =
             return "\n      "
               .concat(
                 componentNameDash,
-                " {\n        display : block;\n        position: relative;\n        overflow: hidden;\n      }\n      "
+                " {\n        display : block;\n        position: relative;\n        overflow: hidden;\n        pointer-events: none;\n      }\n      "
               )
               .concat(
                 componentNameDash,
-                " svg {\n        display: block;\n        position: absolute;\n        width:110%; height: 110%;\n        top: -5%;\n        left: -5%;\n      }\n    "
+                ".active {\n        pointer-events: all;\n      }\n      "
+              )
+              .concat(
+                componentNameDash,
+                " svg {\n        display: block;\n        position: absolute;\n        width:100%; height: 100%;\n        top: 0;\n        left: 0;\n      }\n    "
               )
           }
         },
@@ -382,24 +393,41 @@ var Component =
            * @protected
            */
           get: function get() {
-            return {}
-          }
-          /**
-           * Physical props
-           * @definition    SWebComponent.physicalProps
-           * @protected
-           */
-        },
-        {
-          key: "physicalProps",
-          get: function get() {
-            return []
+            return {
+              /**
+               * Specify the phase 1 duration
+               * @prop
+               * @type    {Integer}
+               */
+              phaseOneDuration: 700,
+
+              /**
+               * Specify the phase 2 duration
+               * @prop
+               * @type    {Integer}
+               */
+              phaseTwoDuration: 500,
+
+              /**
+               * Specify the phase 1 easing. Can be one of the anime.js easing function
+               * @prop
+               * @type    {String}
+               */
+              phaseOneEasing: "easeInOutExpo",
+
+              /**
+               * Specify the phase 2 easing. Can be one of the anime.js easing function
+               * @prop
+               * @type    {String}
+               */
+              phaseTwoEasing: "easeInOutExpo"
+            }
           }
         }
       ]
     )
 
-    return Component
+    return SBlinkTransitionComponent
   })(_SWebComponent2.default)
 
-exports.default = Component
+exports.default = SBlinkTransitionComponent

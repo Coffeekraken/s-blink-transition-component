@@ -207,16 +207,21 @@
   width: 100%;
 }
 
-.clearfix, .clearfix-micro {
+.clearfix,
+.clearfix-micro {
   zoom: 1;
 }
 
-.clearfix:before, .clearfix-micro:before, .clearfix:after, .clearfix-micro:after {
+.clearfix:before,
+.clearfix-micro:before,
+.clearfix:after,
+.clearfix-micro:after {
   content: " ";
   display: table;
 }
 
-.clearfix:after, .clearfix-micro:after {
+.clearfix:after,
+.clearfix-micro:after {
   clear: both;
 }
 
@@ -2239,7 +2244,8 @@
 	 */
 }
 
-.clearfix, .clearfix-micro {
+.clearfix,
+.clearfix-micro {
   /**
 	 * @name 		```.clearfix```
 	 * Apply the micro clearfix on the element
@@ -2297,7 +2303,7 @@
 }
 
 .ratio-21-9:before {
-  content: '';
+  content: "";
   display: block;
   height: 0;
   padding-top: 42.85714%;
@@ -2316,7 +2322,7 @@
 }
 
 .ratio-16-9:before {
-  content: '';
+  content: "";
   display: block;
   height: 0;
   padding-top: 56.25%;
@@ -2335,7 +2341,7 @@
 }
 
 .ratio-4-3:before {
-  content: '';
+  content: "";
   display: block;
   height: 0;
   padding-top: 75%;
@@ -2354,7 +2360,7 @@
 }
 
 .ratio-1-1:before {
-  content: '';
+  content: "";
   display: block;
   height: 0;
   padding-top: 100%;
@@ -2373,7 +2379,9 @@
 	 */
 }
 
-.no-transitions, .no-transitions:before, .no-transitions:after {
+.no-transitions,
+.no-transitions:before,
+.no-transitions:after {
   transition: none !important;
 }
 
@@ -2390,8 +2398,12 @@
 	 */
 }
 
-.clear-transitions, .clear-transitions:before, .clear-transitions:after,
-.clear-transitions *, .clear-transitions *:before, .clear-transitions *:after {
+.clear-transitions,
+.clear-transitions:before,
+.clear-transitions:after,
+.clear-transitions *,
+.clear-transitions *:before,
+.clear-transitions *:after {
   transition: none !important;
 }
 
@@ -2408,7 +2420,9 @@
 	 */
 }
 
-.no-animations, .no-animations:before, .no-animations:after {
+.no-animations,
+.no-animations:before,
+.no-animations:after {
   animation: none !important;
 }
 
@@ -2425,8 +2439,12 @@
 	 */
 }
 
-.clear-animations, .clear-animations:before, .clear-animations:after,
-.clear-animations *, .clear-animations *:before, .clear-animations *:after {
+.clear-animations,
+.clear-animations:before,
+.clear-animations:after,
+.clear-animations *,
+.clear-animations *:before,
+.clear-animations *:after {
   animation: none !important;
 }
 
@@ -2443,7 +2461,9 @@
 	 */
 }
 
-.no-transmations, .no-transmations:before, .no-transmations:after {
+.no-transmations,
+.no-transmations:before,
+.no-transmations:after {
   transition: none !important;
   animation: none !important;
 }
@@ -2461,8 +2481,12 @@
 	 */
 }
 
-.clear-transmations, .clear-transmations:before, .clear-transmations:after,
-.clear-transmations *, .clear-transmations *:before, .clear-transmations *:after {
+.clear-transmations,
+.clear-transmations:before,
+.clear-transmations:after,
+.clear-transmations *,
+.clear-transmations *:before,
+.clear-transmations *:after {
   transition: none !important;
   animation: none !important;
 }
@@ -2662,7 +2686,166 @@
  *
  * @author 			Olivier Bossel <olivier.bossel@gmail.com> (https://olivierbossel.com)
  */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+/**
+ * @name 	SButtonComponent
+ * This file provide the mixins to create buttons
+ */
+.btn,
+.btn--block {
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  outline-width: 0;
+  -webkit-appearance: none;
+  line-height: 0;
+  text-decoration: none;
+  font-size: 1em;
+  user-select: none;
+}
+
+.btn:not(button):not(input),
+.btn--block:not(button):not(input) {
+  line-height: 0.9;
+}
+
+button {
+  line-height: 1;
+}
+
+/**
+ * Apply the button css
+ * @param 		{Number} 		[$modifiers=null] 			The modifiers that represent the button you want. Available : {color} outline link
+ * @param 		{Integer}		[$state=null] 				The state of the button you want like. Available : disabled
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Apply the button bare css
+ * @param 		{Number} 		[$modifiers=null] 			The modifiers that represent the button you want. Available : {color} outline link
+ * @param 		{Integer}		[$state=null] 				The state of the button you want like. Available : disabled
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Apply the button style css
+ * @param 		{Number} 		[$modifiers=null] 			The modifiers that represent the button you want. Available : {color} outline link
+ * @param 		{Integer}		[$state=null] 				The state of the button you want like. Available : disabled
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * @name 	SButtonComponent Classes
+ * This file provide the mixins to generate button classes
+ */
+/**
+ * Provide all the classes of the button component like .btn, .btn--outline, etc...
+ * - ```.btn```
+ * - ```.btn--{color}```
+ * - ```.btn--outline```
+ * - ```.btn--link```
+ * - ```.btn--block```
+ * @param 		{List<Color>} 		[$colors=default primary secondary] 		The colors to generate
+ * @param 		{List<String>} 		[$types=default outline link block hover disabled] 	 The button types to generate. Available: default outline link block hover disabled
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Provide the bare styling for the buttons classes
+ * - ```.btn```
+ * - ```.btn--block```
+ * @param 		{List<String>} 		[$types=default outline link block hover disabled] 	 The button types to generate. Available: default outline link block hover disabled
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+/**
+ * Provide the style styling for the buttons classes
+ * - ```.button--{color}```
+ * - ```.button--outline```
+ * - ```.button--link```
+ * - ```.button:disabled```
+ * - ```.button--hover-{$color}```
+ * @param 		{List<Color>} 		[$colors=default primary secondary] 		The colors to generate
+ * @param 		{List<String>} 		[$types=default outline link block hover disabled] 	 The button types to generate. Available: default outline link block hover disabled
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -2671,7 +2854,17 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -2679,21 +2872,25 @@ body {
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after {
-  content: '';
+blockquote:before,
+blockquote:after {
+  content: "";
   content: none;
 }
 
-q:before, q:after {
-  content: '';
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 
@@ -2771,7 +2968,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -2780,7 +2979,7 @@ a {
 }
 
 html {
-  font-size: 14Px;
+  font-size: 14px;
   color: #848e91;
   font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
   font-weight: normal;
@@ -4184,16 +4383,464 @@ body {
   background-color: #2199e8;
 }
 
+/**
+		 * @name 	```.btn```
+		 * Lead paragraph styling
+		 * @styleguide 	Atoms / Buttons
+		 * @example 	html
+		 * <a class="btn">
+		 * 	Default button
+		 * </a>
+		 */
+.btn {
+  border-radius: 0em;
+  padding: 0.8em 1.4em;
+  height: 2.6em;
+}
+
+/**
+			* @name 	```.btn--block```
+			* Lead paragraph styling
+			* @styleguide 	Atoms / Buttons
+			* @example 	html
+			* <a class="btn btn--block">
+			* 	Block button
+			* </a>
+			*/
+.btn--block {
+  border-radius: 0em;
+  padding: 0.8em 1.4em;
+  height: 2.6em;
+  display: block;
+  width: 100%;
+}
+
+.btn {
+  transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s;
+  outline-color: black;
+  background-color: #848e91;
+  border-color: #848e91;
+  color: white;
+}
+
+.btn[active]:not(:disabled),
+.btn.active:not(:disabled),
+.btn:active:not(:disabled),
+.btn:hover:not(:disabled) {
+  background-color: #5f676a;
+  border-color: #5f676a;
+}
+
+.btn--link {
+  background-color: transparent !important;
+  color: #f2bc2b !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  position: relative;
+}
+
+.btn--link:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0.32em;
+  left: 50%;
+  height: 0.2em;
+  width: 0;
+  transform: translateX(-50%) translateY(0) translateZ(0);
+  transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s;
+  outline-color: black;
+  background: #f2bc2b;
+}
+
+.btn--link[active]:not(:disabled):after,
+.btn--link.active:not(:disabled):after,
+.btn--link:active:not(:disabled):after,
+.btn--link:hover:not(:disabled):after {
+  width: calc(100% - 2.8em);
+}
+
+/**
+			 * @name 	<span class="c-default">Default</span> ```.btn```
+			 * Default button
+			 * @styleguide 	Atoms / Buttons
+			 * @example 	html
+			 * <a class="btn btn--default">
+			 * 	Default button
+			 * </a>
+			 */
+.btn {
+  background-color: #848e91;
+  border-color: #848e91;
+  color: white;
+  /**
+					* @name 	<span class="c-default">Default</span> ```.btn--outline```
+					* Outline default button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <a class="btn btn--outline btn--default">
+					* 	Default outlined button
+					* </a>
+					*/
+  /**
+					* @name 	<span class="c-default">Default</span> ```.btn--link```
+					* Link default button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <a class="btn btn--link btn--default">
+					* 	Default link button
+					* </a>
+					*/
+  /**
+					* @name 	<span class="c-default">Default</span> ```.btn:disabled```
+					* Disabled default button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <button disabled class="btn btn--default">
+					* 	Default disabled button
+					* </button>
+					*/
+}
+
+.btn[active]:not(:disabled),
+.btn.active:not(:disabled),
+.btn:active:not(:disabled),
+.btn:hover:not(:disabled) {
+  background-color: #5f676a;
+  border-color: #5f676a;
+}
+
+.btn.btn--outline {
+  color: #848e91;
+  background-color: transparent;
+  border-color: #848e91;
+}
+
+.btn.btn--outline:active:not(:disabled),
+.btn.btn--outline:hover:not(:disabled),
+.btn.btn--outline.active:not(:disabled),
+:checked + .btn.btn--outline:not(:disabled) {
+  background-color: #848e91;
+  border-color: #848e91;
+  color: white;
+}
+
+.btn.btn--link {
+  background-color: transparent !important;
+  color: #848e91 !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  position: relative;
+}
+
+.btn.btn--link:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0.32em;
+  left: 50%;
+  height: 0.2em;
+  width: 0;
+  transform: translateX(-50%) translateY(0) translateZ(0);
+  transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s;
+  outline-color: black;
+  background: #848e91;
+}
+
+.btn.btn--link[active]:not(:disabled):after,
+.btn.btn--link.active:not(:disabled):after,
+.btn.btn--link:active:not(:disabled):after,
+.btn.btn--link:hover:not(:disabled):after {
+  width: calc(100% - 2.8em);
+}
+
+.btn.btn:disabled {
+  background-color: #848e91;
+  border-color: #848e91;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+.btn.btn:disabled[active]:not(:disabled),
+.btn.btn:disabled.active:not(:disabled),
+.btn.btn:disabled:active:not(:disabled),
+.btn.btn:disabled:hover:not(:disabled) {
+  background-color: #5f676a;
+  border-color: #5f676a;
+}
+
+.btn--hover-default:hover {
+  background-color: #848e91;
+  border-color: #848e91;
+  color: white;
+}
+
+.btn--hover-default:hover[active]:not(:disabled),
+.btn--hover-default:hover.active:not(:disabled),
+.btn--hover-default:hover:active:not(:disabled),
+.btn--hover-default:hover:hover:not(:disabled) {
+  background-color: #5f676a;
+  border-color: #5f676a;
+}
+
+/**
+			 * @name 	<span class="c-primary">Primary</span> ```.btn```
+			 * Primary button
+			 * @styleguide 	Atoms / Buttons
+			 * @example 	html
+			 * <a class="btn btn--primary">
+			 * 	Primary button
+			 * </a>
+			 */
+.btn--primary {
+  background-color: #f2bc2b;
+  border-color: #f2bc2b;
+  color: white;
+  /**
+					* @name 	<span class="c-primary">Primary</span> ```.btn--outline```
+					* Outline primary button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <a class="btn btn--outline btn--primary">
+					* 	Primary outlined button
+					* </a>
+					*/
+  /**
+					* @name 	<span class="c-primary">Primary</span> ```.btn--link```
+					* Link primary button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <a class="btn btn--link btn--primary">
+					* 	Primary link button
+					* </a>
+					*/
+  /**
+					* @name 	<span class="c-primary">Primary</span> ```.btn:disabled```
+					* Disabled primary button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <button disabled class="btn btn--primary">
+					* 	Primary disabled button
+					* </button>
+					*/
+}
+
+.btn--primary[active]:not(:disabled),
+.btn--primary.active:not(:disabled),
+.btn--primary:active:not(:disabled),
+.btn--primary:hover:not(:disabled) {
+  background-color: #c4920c;
+  border-color: #c4920c;
+}
+
+.btn--primary.btn--outline {
+  color: #f2bc2b;
+  background-color: transparent;
+  border-color: #f2bc2b;
+}
+
+.btn--primary.btn--outline:active:not(:disabled),
+.btn--primary.btn--outline:hover:not(:disabled),
+.btn--primary.btn--outline.active:not(:disabled),
+:checked + .btn--primary.btn--outline:not(:disabled) {
+  background-color: #f2bc2b;
+  border-color: #f2bc2b;
+  color: white;
+}
+
+.btn--primary.btn--link {
+  background-color: transparent !important;
+  color: #f2bc2b !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  position: relative;
+}
+
+.btn--primary.btn--link:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0.32em;
+  left: 50%;
+  height: 0.2em;
+  width: 0;
+  transform: translateX(-50%) translateY(0) translateZ(0);
+  transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s;
+  outline-color: black;
+  background: #f2bc2b;
+}
+
+.btn--primary.btn--link[active]:not(:disabled):after,
+.btn--primary.btn--link.active:not(:disabled):after,
+.btn--primary.btn--link:active:not(:disabled):after,
+.btn--primary.btn--link:hover:not(:disabled):after {
+  width: calc(100% - 2.8em);
+}
+
+.btn--primary.btn:disabled {
+  background-color: #f2bc2b;
+  border-color: #f2bc2b;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+.btn--primary.btn:disabled[active]:not(:disabled),
+.btn--primary.btn:disabled.active:not(:disabled),
+.btn--primary.btn:disabled:active:not(:disabled),
+.btn--primary.btn:disabled:hover:not(:disabled) {
+  background-color: #c4920c;
+  border-color: #c4920c;
+}
+
+.btn--hover-primary:hover {
+  background-color: #f2bc2b;
+  border-color: #f2bc2b;
+  color: white;
+}
+
+.btn--hover-primary:hover[active]:not(:disabled),
+.btn--hover-primary:hover.active:not(:disabled),
+.btn--hover-primary:hover:active:not(:disabled),
+.btn--hover-primary:hover:hover:not(:disabled) {
+  background-color: #c4920c;
+  border-color: #c4920c;
+}
+
+/**
+			 * @name 	<span class="c-secondary">Secondary</span> ```.btn```
+			 * Secondary button
+			 * @styleguide 	Atoms / Buttons
+			 * @example 	html
+			 * <a class="btn btn--secondary">
+			 * 	Secondary button
+			 * </a>
+			 */
+.btn--secondary {
+  background-color: #2b3438;
+  border-color: #2b3438;
+  color: white;
+  /**
+					* @name 	<span class="c-secondary">Secondary</span> ```.btn--outline```
+					* Outline secondary button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <a class="btn btn--outline btn--secondary">
+					* 	Secondary outlined button
+					* </a>
+					*/
+  /**
+					* @name 	<span class="c-secondary">Secondary</span> ```.btn--link```
+					* Link secondary button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <a class="btn btn--link btn--secondary">
+					* 	Secondary link button
+					* </a>
+					*/
+  /**
+					* @name 	<span class="c-secondary">Secondary</span> ```.btn:disabled```
+					* Disabled secondary button
+					* @styleguide 	Atoms / Buttons
+					* @example 	html
+					* <button disabled class="btn btn--secondary">
+					* 	Secondary disabled button
+					* </button>
+					*/
+}
+
+.btn--secondary[active]:not(:disabled),
+.btn--secondary.active:not(:disabled),
+.btn--secondary:active:not(:disabled),
+.btn--secondary:hover:not(:disabled) {
+  background-color: #0a0c0d;
+  border-color: #0a0c0d;
+}
+
+.btn--secondary.btn--outline {
+  color: #2b3438;
+  background-color: transparent;
+  border-color: #2b3438;
+}
+
+.btn--secondary.btn--outline:active:not(:disabled),
+.btn--secondary.btn--outline:hover:not(:disabled),
+.btn--secondary.btn--outline.active:not(:disabled),
+:checked + .btn--secondary.btn--outline:not(:disabled) {
+  background-color: #2b3438;
+  border-color: #2b3438;
+  color: white;
+}
+
+.btn--secondary.btn--link {
+  background-color: transparent !important;
+  color: #2b3438 !important;
+  border-color: rgba(0, 0, 0, 0) !important;
+  position: relative;
+}
+
+.btn--secondary.btn--link:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0.32em;
+  left: 50%;
+  height: 0.2em;
+  width: 0;
+  transform: translateX(-50%) translateY(0) translateZ(0);
+  transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s;
+  outline-color: black;
+  background: #2b3438;
+}
+
+.btn--secondary.btn--link[active]:not(:disabled):after,
+.btn--secondary.btn--link.active:not(:disabled):after,
+.btn--secondary.btn--link:active:not(:disabled):after,
+.btn--secondary.btn--link:hover:not(:disabled):after {
+  width: calc(100% - 2.8em);
+}
+
+.btn--secondary.btn:disabled {
+  background-color: #2b3438;
+  border-color: #2b3438;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+.btn--secondary.btn:disabled[active]:not(:disabled),
+.btn--secondary.btn:disabled.active:not(:disabled),
+.btn--secondary.btn:disabled:active:not(:disabled),
+.btn--secondary.btn:disabled:hover:not(:disabled) {
+  background-color: #0a0c0d;
+  border-color: #0a0c0d;
+}
+
+.btn--hover-secondary:hover {
+  background-color: #2b3438;
+  border-color: #2b3438;
+  color: white;
+}
+
+.btn--hover-secondary:hover[active]:not(:disabled),
+.btn--hover-secondary:hover.active:not(:disabled),
+.btn--hover-secondary:hover:active:not(:disabled),
+.btn--hover-secondary:hover:hover:not(:disabled) {
+  background-color: #0a0c0d;
+  border-color: #0a0c0d;
+}
+
 body {
   padding: 3rem;
   background-color: #f2bc2b;
 }
 
-s-turbulence-transition {
+s-blink-transition {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  color: black;
+  color: #15191b;
 }

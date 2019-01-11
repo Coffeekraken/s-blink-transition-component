@@ -3,7 +3,7 @@ module.exports = {
   port: 3000,
 
   // title
-  title: "s-{component-name}-component",
+  title: "s-blink-transition-component",
 
   // layout
   layout: "right",
@@ -14,38 +14,112 @@ module.exports = {
     port: 4000
   },
 
+  // demos
+  demos: {
+    color: {
+      title: "Color",
+      editors: {
+        css: {
+          language: "scss",
+          data: `
+            @import 'node_modules/coffeekraken-sugar/index';
+            @import 'node_modules/coffeekraken-s-button-component/index';
+
+            @include s-setup(());
+            @include s-init();
+            @include s-classes();
+
+            @include s-button-classes();
+
+            body {
+              padding: s-space(bigger);
+              background-color: s-color(primary);
+            }
+
+            s-blink-transition {
+              @include s-fit(absolute);
+              color: s-color(info);
+            }
+          `
+        }
+      }
+    },
+    duration: {
+      title: "Duration",
+      editors: {
+        html: {
+          language: "html",
+          data: `
+            <s-blink-transition phase-one-duration="1500" phase-two-duration="2000"></s-blink-transition>
+            <button class="btn btn--secondary" onClick="playTransition()">
+              Play the transition again
+            </button>
+          `
+        }
+      }
+    },
+    easings: {
+      title: "Easings",
+      editors: {
+        html: {
+          language: "html",
+          data: `
+            <s-blink-transition phase-one-easing="easeInOutQuad" phase-two-easing="easeInOutQuad"></s-blink-transition>
+            <button class="btn btn--secondary" onClick="playTransition()">
+              Play the transition again
+            </button>
+          `
+        }
+      }
+    }
+  },
+
   // editors
   editors: {
     html: {
       language: "html",
       data: `
-        <h1 class="h3 m-b-small">
-          Coffeekraken s-{component-name}-component
-        </h1>
-        <p class="p m-b-bigger">
-          {component-description}
-        </p>
-        <!-- examples here... -->
+        <s-blink-transition></s-blink-transition>
+        <button class="btn btn--secondary" onClick="playTransition()">
+          Play the transition again
+        </button>
       `
     },
     css: {
       language: "scss",
       data: `
         @import 'node_modules/coffeekraken-sugar/index';
-        @import 'node_modules/coffeekraken-s-typography-component/index';
+        @import 'node_modules/coffeekraken-s-button-component/index';
+
+        @include s-setup(());
         @include s-init();
         @include s-classes();
-        @include s-typography-classes();
+
+        @include s-button-classes();
+
         body {
           padding: s-space(bigger);
+          background-color: s-color(primary);
         }
-        // component css here...
+
+        s-blink-transition {
+          @include s-fit(absolute);
+          color: s-color(secondary, -darken 10%);
+        }
       `
     },
     js: {
       language: "js",
       data: `
-        import Component from './dist/index'
+        import SBlinkTransitionComponent from './dist/index'
+        window.playTransition = function() {
+          const $transition = document.querySelector('s-blink-transition')
+          $transition.animateIn().then(() => {
+            document.body.classList.toggle('bkg-error')
+            $transition.animateOut()
+          })
+        }
+        playTransition()
       `
     }
   }

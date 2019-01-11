@@ -1,15 +1,18 @@
-@import 'node_modules/coffeekraken-sugar/index';
+@import "node_modules/coffeekraken-sugar/index";
+@import "node_modules/coffeekraken-s-button-component/index";
 
 @include s-setup(());
 @include s-init();
 @include s-classes();
+
+@include s-button-classes();
 
 body {
   padding: s-space(bigger);
   background-color: s-color(primary);
 }
 
-s-turbulence-transition {
+s-blink-transition {
   @include s-fit(absolute);
-  color: black;
+  color: s-color(secondary, -darken 10%);
 }
