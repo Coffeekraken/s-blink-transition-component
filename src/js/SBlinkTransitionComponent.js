@@ -179,16 +179,6 @@ export default class SBlinkTransitionComponent extends SWebComponent {
   }
 
   /**
-   * Render the component
-   * Here goes the code that reflect the this.props state on the actual html element
-   * @definition    SWebComponent.render
-   * @protected
-   */
-  render() {
-    super.render()
-  }
-
-  /**
    * Anim in
    * @return    {Promise}    Return a promise when the animation in it finished
    */
@@ -228,5 +218,16 @@ export default class SBlinkTransitionComponent extends SWebComponent {
         resolve(this)
       }, this._tlTop.duration)
     })
+  }
+
+  /**
+   * Go to still frame
+   */
+  goToStillFrame() {
+    this._tlTop.reverse()
+    this._tlBottom.reverse()
+    this._tlBottom.seek(0)
+    this._tlTop.seek(0)
+    this.classList.add("active")
   }
 }
