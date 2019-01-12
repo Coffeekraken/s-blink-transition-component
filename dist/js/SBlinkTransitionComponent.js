@@ -281,22 +281,6 @@ var SBlinkTransitionComponent =
             ).call(this, name, newVal, oldVal)
           }
           /**
-           * Render the component
-           * Here goes the code that reflect the this.props state on the actual html element
-           * @definition    SWebComponent.render
-           * @protected
-           */
-        },
-        {
-          key: "render",
-          value: function render() {
-            _get(
-              _getPrototypeOf(SBlinkTransitionComponent.prototype),
-              "render",
-              this
-            ).call(this)
-          }
-          /**
            * Anim in
            * @return    {Promise}    Return a promise when the animation in it finished
            */
@@ -357,6 +341,23 @@ var SBlinkTransitionComponent =
                 resolve(_this2)
               }, _this2._tlTop.duration)
             })
+          }
+          /**
+           * Go to still frame
+           */
+        },
+        {
+          key: "goToStillFrame",
+          value: function goToStillFrame() {
+            this._tlTop.reverse()
+
+            this._tlBottom.reverse()
+
+            this._tlBottom.seek(0)
+
+            this._tlTop.seek(0)
+
+            this.classList.add("active")
           }
         }
       ],

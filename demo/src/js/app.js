@@ -8,5 +8,9 @@ window.playTransition = function() {
     document.body.classList.toggle("bkg-error")
     $transition.animateOut()
   })
+  // $transition.goToStillFrame()
+  // $transition.animateOut().then(() => {
+  //   $transition.animateIn()
+  // })
 }
 playTransition()
