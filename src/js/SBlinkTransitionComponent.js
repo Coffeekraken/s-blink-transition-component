@@ -54,13 +54,14 @@ export default class SBlinkTransitionComponent extends SWebComponent {
   static defaultCss(componentName, componentNameDash) {
     return `
       ${componentNameDash} {
-        display : block;
+        display : none;
         position: relative;
         overflow: hidden;
         pointer-events: none;
       }
       ${componentNameDash}.active {
         pointer-events: all;
+        display: block;
       }
       ${componentNameDash} svg {
         display: block;
@@ -185,7 +186,9 @@ export default class SBlinkTransitionComponent extends SWebComponent {
   animateIn() {
     if (this._isAnimateIn) return
     this._isAnimateIn = true
-    this.classList.add("active")
+    setTimeout(() => {
+      this.classList.add("active")
+    })
     return new Promise(resolve => {
       this._tlTop.reverse()
       this._tlTop.play()
