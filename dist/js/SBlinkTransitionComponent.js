@@ -292,7 +292,9 @@ var SBlinkTransitionComponent =
 
             if (this._isAnimateIn) return
             this._isAnimateIn = true
-            this.classList.add("active")
+            setTimeout(function() {
+              _this.classList.add("active")
+            })
             return new Promise(function(resolve) {
               _this._tlTop.reverse()
 
@@ -373,11 +375,11 @@ var SBlinkTransitionComponent =
             return "\n      "
               .concat(
                 componentNameDash,
-                " {\n        display : block;\n        position: relative;\n        overflow: hidden;\n        pointer-events: none;\n      }\n      "
+                " {\n        display : none;\n        position: relative;\n        overflow: hidden;\n        pointer-events: none;\n      }\n      "
               )
               .concat(
                 componentNameDash,
-                ".active {\n        pointer-events: all;\n      }\n      "
+                ".active {\n        pointer-events: all;\n        display: block;\n      }\n      "
               )
               .concat(
                 componentNameDash,
