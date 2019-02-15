@@ -191,8 +191,8 @@ export default class SBlinkTransitionComponent extends SWebComponent {
     })
     return new Promise(resolve => {
       this._tlTop.reverse()
-      this._tlTop.play()
       this._tlBottom.reverse()
+      this._tlTop.play()
       this._tlBottom.play()
       setTimeout(() => {
         this._isAnimateIn = false
@@ -212,8 +212,8 @@ export default class SBlinkTransitionComponent extends SWebComponent {
     this.classList.add("active")
     return new Promise(resolve => {
       this._tlTop.reverse()
-      this._tlTop.play()
       this._tlBottom.reverse()
+      this._tlTop.play()
       this._tlBottom.play()
       setTimeout(() => {
         this._isAnimateOut = false
