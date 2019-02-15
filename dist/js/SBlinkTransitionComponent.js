@@ -298,9 +298,9 @@ var SBlinkTransitionComponent =
             return new Promise(function(resolve) {
               _this._tlTop.reverse()
 
-              _this._tlTop.play()
-
               _this._tlBottom.reverse()
+
+              _this._tlTop.play()
 
               _this._tlBottom.play()
 
@@ -329,9 +329,9 @@ var SBlinkTransitionComponent =
             return new Promise(function(resolve) {
               _this2._tlTop.reverse()
 
-              _this2._tlTop.play()
-
               _this2._tlBottom.reverse()
+
+              _this2._tlTop.play()
 
               _this2._tlBottom.play()
 
